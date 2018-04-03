@@ -1,10 +1,14 @@
 package com.in28min.todo;
 
+import java.util.Objects;
+
 public class Todo {
     String name;
+    String category;
 
-    public Todo(String name) {
+    public Todo(String name, String category) {
         this.name = name;
+        this.category = category;
     }
 
     public String getName() {
@@ -16,10 +20,33 @@ public class Todo {
         this.name = name;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Todo{" +
                 "name='" + name + '\'' +
+                ", category='" + category + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Todo todo = (Todo) o;
+        return Objects.equals(name, todo.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name);
     }
 }
